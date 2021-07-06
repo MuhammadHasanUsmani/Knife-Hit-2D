@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
     [Header("Knife Spawning")]
     [SerializeField]
-    private Vector2 knifeSpawnPosition;
+    private Vector3 knifeSpawnPosition;
     [SerializeField]
     //this will be a prefab of the knife. You will create the prefab later.
     private GameObject knifeObject;

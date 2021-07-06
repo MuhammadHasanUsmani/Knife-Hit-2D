@@ -12,14 +12,14 @@ public class KnifeScript : MonoBehaviour
     private bool isActive = true;
 
     //for controlling physics
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     //the collider attached to Knife
-    private BoxCollider2D knifeCollider;
+    private BoxCollider knifeCollider;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        knifeCollider = GetComponent<BoxCollider2D>();
+        rb = GetComponent<Rigidbody>();
+        knifeCollider = GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -28,15 +28,15 @@ public class KnifeScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isActive)
         {
             //"throwing" the knife
-            rb.AddForce(throwForce, ForceMode2D.Impulse);
+            rb.AddForce(throwForce, ForceMode.Impulse);
             //once the knife isn't stationary, we can apply gravity (it will not automatically fall down)
-            rb.gravityScale = 1;
+            rb.useGravity=true;
             //Decrement number of available knives
             GameController.Instance.GameUI.DecrementDisplayedKnifeCount();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         //we don't even want to detect collisions when the knife isn't active
         if (!isActive)
@@ -50,17 +50,19 @@ public class KnifeScript : MonoBehaviour
         {
             //play the particle effect on collision,
             //you don't always have to store the component in a field...
+            print("Start");
             GetComponent<ParticleSystem>().Play();
 
             //stop the knife
-            rb.velocity = new Vector2(0, 0);
+            rb.velocity = new Vector3(0, 0, 0);
+            print("Velocity 0");
             //this will automatically inherit rotation of the new parent (log)
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.isKinematic = true;
             transform.SetParent(collision.collider.transform);
 
             //move the collider away from the blade which is stuck in the log
-            knifeCollider.offset = new Vector2(knifeCollider.offset.x, -0.4f);
-            knifeCollider.size = new Vector2(knifeCollider.size.x, 1.2f);
+            knifeCollider.transform.position = new Vector3(knifeCollider.transform.position.x, 0,knifeCollider.transform.position.z);
+            knifeCollider.size = new Vector3(knifeCollider.size.x, 0.21f, knifeCollider.size.z);
 
             //Spawn another knife
             GameController.Instance.OnSuccessfulKnifeHit();
@@ -69,7 +71,7 @@ public class KnifeScript : MonoBehaviour
         else if (collision.collider.tag == "Knife")
         {
             //start rapidly moving downwards
-            rb.velocity = new Vector2(rb.velocity.x, -2);
+            rb.velocity = new Vector3(rb.velocity.x, -2,0);
             //Game Over
             GameController.Instance.StartGameOverSequence(false);
         }
