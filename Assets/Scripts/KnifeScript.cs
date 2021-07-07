@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class KnifeScript : MonoBehaviour
 {
+    AudioSource audiosource;
+    public AudioClip throwKnife;
+    public AudioClip logTouch;
+
+
     [SerializeField]
     private Vector2 throwForce;
 
@@ -18,6 +23,7 @@ public class KnifeScript : MonoBehaviour
 
     private void Awake()
     {
+        audiosource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         knifeCollider = GetComponent<BoxCollider>();
     }
@@ -27,6 +33,7 @@ public class KnifeScript : MonoBehaviour
         //this method of detecting input also works for touch
         if (Input.GetMouseButtonDown(0) && isActive)
         {
+            audiosource.PlayOneShot(throwKnife);
             //"throwing" the knife
             rb.AddForce(throwForce, ForceMode.Impulse);
             //once the knife isn't stationary, we can apply gravity (it will not automatically fall down)
@@ -50,6 +57,7 @@ public class KnifeScript : MonoBehaviour
             //play the particle effect on collision,
             //you don't always have to store the component in a field...
             GetComponent<ParticleSystem>().Play();
+            audiosource.PlayOneShot(logTouch);
 
             //stop the knife
             rb.velocity = new Vector3(0, 0, 0);
