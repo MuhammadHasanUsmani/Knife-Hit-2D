@@ -45,25 +45,22 @@ public class KnifeScript : MonoBehaviour
         //if the knife happens to be active (1st collision), deactivate it
         isActive = false;
 
-        //collision with a log
         if (collision.collider.tag == "Log")
         {
             //play the particle effect on collision,
             //you don't always have to store the component in a field...
-            print("Start");
             GetComponent<ParticleSystem>().Play();
 
             //stop the knife
             rb.velocity = new Vector3(0, 0, 0);
-            print("Velocity 0");
             //this will automatically inherit rotation of the new parent (log)
             rb.isKinematic = true;
             transform.SetParent(collision.collider.transform);
 
             //move the collider away from the blade which is stuck in the log
-            knifeCollider.transform.position = new Vector3(knifeCollider.transform.position.x, 0,knifeCollider.transform.position.z);
-            knifeCollider.size = new Vector3(knifeCollider.size.x, 0.21f, knifeCollider.size.z);
-
+            knifeCollider.transform.position = new Vector3(knifeCollider.transform.position.x, 0.09f,knifeCollider.transform.position.z);
+            knifeCollider.size = new Vector3(0.08f, 0.15f, knifeCollider.size.z);
+            knifeCollider.center = new Vector3(0, -0.01f, 0);
             //Spawn another knife
             GameController.Instance.OnSuccessfulKnifeHit();
         }
