@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour
     //we can get this instance from other scripts very easily
     public static GameController Instance { get; private set; }
 
+    public GameObject destroy;
+
     [Header("LogPrefebs")]
     public List<GameObject> logPrefebs = new List<GameObject>();
     [SerializeField] GameObject SpawnyLog;
@@ -119,12 +121,14 @@ public class GameController : MonoBehaviour
             knifeCount = Random.Range(1, 3);
             //update the UI as soon as the game starts
             GameUI.SetInitialDisplayedKnifeCount(knifeCount);
+            Destroy(destroy);
 
             for (int i = 0; i < logPrefebs.Count; i++)
             {
                
                 Instantiate(logPrefebs[i], logSpawnPosition, Quaternion.identity);
                 print("newlog");
+                print(i);
             }
         }
     }
