@@ -12,6 +12,13 @@ public class GameController : MonoBehaviour
     //we can get this instance from other scripts very easily
     public static GameController Instance { get; private set; }
 
+    [Header("LogPrefebs")]
+    public List<GameObject> logPrefebs = new List<GameObject>();
+    [SerializeField] GameObject SpawnyLog;
+
+    //logPrefebs  currentlog;
+    [SerializeField]   Vector3 logSpawnPosition = new Vector3 () ;
+
     [SerializeField]
     private int knifeCount;
 
@@ -35,11 +42,14 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        knifeCount = Random.Range(1, 3);
         //update the UI as soon as the game starts
         GameUI.SetInitialDisplayedKnifeCount(knifeCount);
         //also spawn the first knife
         SpawnKnife();
+        SpawnLog();
     }
+    
 
     //this will be called from KnifeScript
     public void OnSuccessfulKnifeHit()
@@ -61,6 +71,19 @@ public class GameController : MonoBehaviour
         Instantiate(knifeObject, knifeSpawnPosition, Quaternion.identity);
     }
 
+    private void SpawnLog()
+    {
+
+        
+            print("firstlog");
+
+        
+
+        Instantiate(SpawnyLog, logSpawnPosition, Quaternion.identity);
+            
+        
+    }
+
     //the public method for starting game over
     public void StartGameOverSequence(bool win)
     {
@@ -78,17 +101,42 @@ public class GameController : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.3f);
             //Feel free to set different values for knife count and log's rotation pattern
             //instead of just restarting. This would make it feel like a new, harder level.
-            RestartGame();
+            NewLog();
+           
         }
         else
         {
             GameUI.ShowRestartButton();
         }
     }
+    public void SpawnLogMotor()
+    {
+        if (knifeCount <= 0)
+        {
+            GameUI.SetInitialDisplayedKnifeCount(knifeCount);
+            //Destroy(SpawnyLog);
+            //SpawnyLog.GetComponent<Renderer>().enabled = false;
+            knifeCount = Random.Range(1, 3);
+            //update the UI as soon as the game starts
+            GameUI.SetInitialDisplayedKnifeCount(knifeCount);
 
-    public void RestartGame()
+            for (int i = 0; i < logPrefebs.Count; i++)
+            {
+               
+                Instantiate(logPrefebs[i], logSpawnPosition, Quaternion.identity);
+                print("newlog");
+            }
+        }
+    }
+    public void NewLog()
     {
         //restart the scene by reloading the currently active scene
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        SpawnLogMotor();
+        SpawnKnife();
+    }
+    public void RestartGame()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 }
