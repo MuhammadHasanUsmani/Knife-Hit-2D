@@ -118,13 +118,16 @@ public class GameController : MonoBehaviour
             
             knifeCount = Random.Range(1, 3);
 
-            //GameUI.panelKnives.clear;
             //update the UI as soon as the game starts
             GameUI.SetInitialDisplayedKnifeCount(knifeCount);
             Destroy(GameObject.FindGameObjectWithTag("Log"));
 
-                Instantiate(logPrefebs[currentLog], logSpawnPosition, Quaternion.identity);
+            Instantiate(logPrefebs[currentLog], logSpawnPosition, Quaternion.identity);
             currentLog++;
+            if (currentLog >= logPrefebs.Count)
+            {
+                currentLog = 0;
+            }
 
             print(currentLog);
         }

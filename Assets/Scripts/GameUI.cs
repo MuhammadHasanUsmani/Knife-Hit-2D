@@ -7,7 +7,7 @@ public class GameUI : MonoBehaviour
 {
     [SerializeField]
     private GameObject restartButton;
-
+    private int knifeIconIndexToChange = 0;
     [Header("Knife Count Display")] //header for organization purposes
     //[SerializeField]
     public GameObject panelKnives;
@@ -26,15 +26,22 @@ public class GameUI : MonoBehaviour
     //add a number of iconKnife children to panelKnives
     public void SetInitialDisplayedKnifeCount(int count)
     {
+        foreach (Transform child in panelKnives.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        knifeIconIndexToChange = 0;
         for (int i = 0; i < count; i++)
             Instantiate(iconKnife, panelKnives.transform);
     }
 
     //keeping track of the last icon representing an unthrown knife
-    private int knifeIconIndexToChange = 0;
+    
     //changing the color of the image to represent a thrown (used) knife
     public void DecrementDisplayedKnifeCount()
     {
+        
+        if (knifeIconIndexToChange < panelKnives.transform.childCount)
         panelKnives.transform.GetChild(knifeIconIndexToChange++)
             .GetComponent<Image>().color = usedKnifeIconColor;
     }
