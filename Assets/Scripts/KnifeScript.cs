@@ -39,7 +39,7 @@ public class KnifeScript : MonoBehaviour
             //once the knife isn't stationary, we can apply gravity (it will not automatically fall down)
             rb.useGravity=true;
             //Decrement number of available knives
-            GameController.Instance.GameUI.DecrementDisplayedKnifeCount();
+            GameControllerknifehit3d.Instance.GameUI.DecrementDisplayedKnifeCount();
         }
     }
 
@@ -70,7 +70,7 @@ public class KnifeScript : MonoBehaviour
             knifeCollider.size = new Vector3(0.08f, 0.15f, knifeCollider.size.z);
             knifeCollider.center = new Vector3(0, -0.01f, 0);
             //Spawn another knife
-            GameController.Instance.OnSuccessfulKnifeHit();
+            GameControllerknifehit3d.Instance.OnSuccessfulKnifeHit();
         }
         //collision with another knife
         else if (collision.collider.tag == "Knife")
@@ -78,7 +78,7 @@ public class KnifeScript : MonoBehaviour
             //start rapidly moving downwards
             rb.velocity = new Vector3(rb.velocity.x, -2,0);
             //Game Over
-            GameController.Instance.StartGameOverSequence(false);
+            GameControllerknifehit3d.Instance.StartGameOverSequence(false);
         }
     }
 }
