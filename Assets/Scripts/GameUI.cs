@@ -9,8 +9,8 @@ public class GameUI : MonoBehaviour
     private GameObject restartButton;
 
     [Header("Knife Count Display")] //header for organization purposes
-    [SerializeField]
-    private GameObject panelKnives;
+    //[SerializeField]
+    public GameObject panelKnives;
     [SerializeField]
     //this will be set to the icon prefab
     private GameObject iconKnife;

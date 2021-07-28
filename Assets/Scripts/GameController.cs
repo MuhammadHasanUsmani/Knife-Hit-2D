@@ -12,8 +12,7 @@ public class GameController : MonoBehaviour
     //we can get this instance from other scripts very easily
     public static GameController Instance { get; private set; }
 
-    public GameObject destroy;
-
+    int currentLog = 0;
     [Header("LogPrefebs")]
     public List<GameObject> logPrefebs = new List<GameObject>();
     [SerializeField] GameObject SpawnyLog;
@@ -115,22 +114,25 @@ public class GameController : MonoBehaviour
     {
         if (knifeCount <= 0)
         {
-            GameUI.SetInitialDisplayedKnifeCount(knifeCount);
-            //Destroy(SpawnyLog);
-            //SpawnyLog.GetComponent<Renderer>().enabled = false;
+            
+            
             knifeCount = Random.Range(1, 3);
+
+            //GameUI.panelKnives.clear;
             //update the UI as soon as the game starts
             GameUI.SetInitialDisplayedKnifeCount(knifeCount);
-            Destroy(destroy);
+            Destroy(GameObject.FindGameObjectWithTag("Log"));
 
-            for (int i = 0; i < logPrefebs.Count; i++)
-            {
-               
-                Instantiate(logPrefebs[i], logSpawnPosition, Quaternion.identity);
-                print("newlog");
-                print(i);
-            }
+                Instantiate(logPrefebs[currentLog], logSpawnPosition, Quaternion.identity);
+            currentLog++;
+
+            print(currentLog);
         }
+            if (currentLog > 5)
+            {
+                Instantiate(logPrefebs[Random.Range(2, logPrefebs.Count - 1)], logSpawnPosition, Quaternion.identity);
+                print("restart");
+            }
     }
     public void NewLog()
     {

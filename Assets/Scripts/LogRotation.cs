@@ -50,4 +50,8 @@ public class LogRotation : MonoBehaviour
             rotationIndex = rotationIndex < rotationPattern.Length ? rotationIndex : 0;
         }
     }
+    public void DestroyObj()
+    {
+        Destroy(this);
+    }
 }

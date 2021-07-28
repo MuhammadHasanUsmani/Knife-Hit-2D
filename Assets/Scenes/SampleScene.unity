@@ -254,6 +254,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logPrefebs:
   - {fileID: 6176082015456126058, guid: 6798ab23b5e72574489e18992005e3ea, type: 3}
+  - {fileID: 6176082015456126058, guid: 6798ab23b5e72574489e18992005e3ea, type: 3}
+  - {fileID: 6176082015456126058, guid: 6798ab23b5e72574489e18992005e3ea, type: 3}
+  - {fileID: 6176082015456126058, guid: 6798ab23b5e72574489e18992005e3ea, type: 3}
+  - {fileID: 6176082015456126058, guid: 6798ab23b5e72574489e18992005e3ea, type: 3}
   SpawnyLog: {fileID: 8853324358134013609, guid: 09def21802b3b3b41996e6bc385bef6a,
     type: 3}
   logSpawnPosition: {x: 0, y: 2, z: 0}
@@ -666,6 +670,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1684873055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684873056}
+  m_Layer: 0
+  m_Name: destroy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1684873056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684873055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.025439143, y: 0.45611364, z: 0.13234794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1702713584
 GameObject:
   m_ObjectHideFlags: 0
