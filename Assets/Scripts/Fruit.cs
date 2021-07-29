@@ -1,9 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fruit : MonoBehaviour
 {
+    public Text scoretxt;
+    private int score;
+    
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Knife")
+        {
+            print("fruithit");
+            Destroy(gameObject);
+            GetComponent<ParticleSystem>().Play();
+            
+        }
+
+    }
     //Rigidbody rb;
     //Rigidbody Childrb;
     //Collider ChildCollider;
@@ -36,7 +51,7 @@ public class Fruit : MonoBehaviour
     //        Childrb.useGravity = true;
     //        rb.useGravity = true;
     //        DelayCollider(pear);
-            
+
     //    }
 
     //}
