@@ -16,6 +16,7 @@ public class Fruit : MonoBehaviour
             Destroy(gameObject);
             GetComponent<ParticleSystem>().Play();
             
+
         }
 
     }
