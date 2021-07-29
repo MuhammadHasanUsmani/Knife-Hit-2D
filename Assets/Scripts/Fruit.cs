@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Fruit : MonoBehaviour
+
+public class Fruit : Score 
 {
-    public Text scoretxt;
-    private int score;
-    
+    public static Fruit intance;
+
+    private void Awake()
+    {
+        intance = this;
+    }
+
+
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Knife")
@@ -15,8 +21,9 @@ public class Fruit : MonoBehaviour
             print("fruithit");
             Destroy(gameObject);
             GetComponent<ParticleSystem>().Play();
-            
+            SetScore();
 
+            
         }
 
     }
