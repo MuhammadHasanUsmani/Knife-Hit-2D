@@ -74,7 +74,7 @@ public class GameControllerknifehit3d : MonoBehaviour
 
     private void SpawnLog()
     {
-        Instantiate(logPrefebs[currentLog], logSpawnPosition, Quaternion.identity);
+        Instantiate(logPrefebs[currentLog], logPrefebs[currentLog].transform.position, logPrefebs[currentLog].transform.rotation);
 
     }
 
@@ -111,13 +111,12 @@ public class GameControllerknifehit3d : MonoBehaviour
             //update the UI as soon as the game starts
             GameUI.SetInitialDisplayedKnifeCount(knifeCount);
             Destroy(GameObject.FindGameObjectWithTag("Log"));
-
-            Instantiate(logPrefebs[currentLog], logSpawnPosition, Quaternion.identity);
             currentLog++;
             if (currentLog >= logPrefebs.Count)
             {
                 currentLog = 0;
             }
+            Instantiate(logPrefebs[currentLog], logPrefebs[currentLog].transform.position, logPrefebs[currentLog].transform.rotation);
 
             print(currentLog);
         }

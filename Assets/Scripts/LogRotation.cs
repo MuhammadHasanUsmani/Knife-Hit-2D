@@ -32,7 +32,7 @@ public class LogRotation : MonoBehaviour
     private void FixedUpdate()
     {
             degrees = rotationPattern[rotationIndex].Speed;
-            to = new Vector3(0, 0, degrees);
+            to = new Vector3(0,degrees,0);
             transform.Rotate(to * Mathf.Abs(rotationPattern[rotationIndex].Speed) * Time.deltaTime);
            
     }

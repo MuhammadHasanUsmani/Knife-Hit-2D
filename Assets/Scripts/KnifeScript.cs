@@ -66,7 +66,7 @@ public class KnifeScript : MonoBehaviour
             transform.SetParent(collision.collider.transform);
 
             //move the collider away from the blade which is stuck in the log
-            knifeCollider.transform.position = new Vector3(knifeCollider.transform.position.x, 0.09f,knifeCollider.transform.position.z);
+            knifeCollider.transform.position = new Vector3(knifeCollider.transform.position.x, knifeCollider.transform.position.y, knifeCollider.transform.position.z);
             knifeCollider.size = new Vector3(0.08f, 0.15f, knifeCollider.size.z);
             knifeCollider.center = new Vector3(0, -0.01f, 0);
             //Spawn another knife
