@@ -3,16 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Fruit : MonoBehaviour 
+public class Fruit : Score 
 {
+    public static Fruit intance;
+
+    private void Awake()
+    {
+        intance = this;
+    }
+
+
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Knife")
         {
             print("fruithit");
+            Destroy(gameObject);
             GetComponent<ParticleSystem>().Play();
-            Score.instance.SetScore();
-            Destroy(this.gameObject);
+            SetScore();
+
+            
         }
 
     }
@@ -32,7 +43,7 @@ public class Fruit : MonoBehaviour
     ////    {
     ////        pear = pear.transform.GetChild(0).gameObject;
     ////        pear.transform.parent=null;
-    ////         rb.useGravity = true;
+    ////        rb.useGravity = true;
     ////        transform.parent = null;
     ////    }
 
