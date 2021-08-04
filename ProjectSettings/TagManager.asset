@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Log
   - Knife
-  - OverlayDialog
-  - Score
   layers:
   - Default
   - TransparentFX

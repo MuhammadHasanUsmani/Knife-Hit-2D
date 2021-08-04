@@ -7,40 +7,22 @@ public class Score : MonoBehaviour
 {
 
     public Text scoretxt;
-    public Text HighScoretext;
-    private int CurrentScore = 0;
-    private int HighScore;
-    public static Score instance;
+    private int score=0;
     public void Awake()
     {
-        instance = this;
-        PlayerPrefs.SetInt("score", CurrentScore);
-        scoretxt.text = PlayerPrefs.GetInt("score").ToString(); 
-        HighScoretext.text = PlayerPrefs.GetInt("HighScore").ToString(); 
+        PlayerPrefs.SetInt("score", score);
     }
     public void SetScore()
     {
         print("hi");
-        CurrentScore = PlayerPrefs.GetInt("score");
-        CurrentScore += 10;
-        PlayerPrefs.SetInt("score", CurrentScore);
-        string temp = CurrentScore.ToString();
-        print("last score " + temp);
-        scoretxt.text = temp;
+        score = PlayerPrefs.GetInt("score");
+        print("first score "+score);
+        score += 10;
+        PlayerPrefs.SetInt("score", score);
+        print("last score " + score);
+        scoretxt.text = score.ToString();
 
-    }
-    public void SetHighScore(int LastScore)
-    {
-        int temp = PlayerPrefs.GetInt("HighScore");
-        if (LastScore > temp)
-        {
-            PlayerPrefs.SetInt("HighScore", LastScore);
-            HighScoretext.text = LastScore.ToString();
-        }
-    }
-    public int GetScore()
-    {
-        return CurrentScore;
+
     }
 
 
