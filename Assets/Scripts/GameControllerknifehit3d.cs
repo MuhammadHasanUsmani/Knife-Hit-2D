@@ -15,7 +15,7 @@ public class GameControllerknifehit3d : MonoBehaviour
     int currentLog = 0;
     [Header("LogPrefebs")]
     public List<GameObject> logPrefebs = new List<GameObject>();
-    //[SerializeField] GameObject SpawnyLog;
+    [SerializeField] GameObject SpawnyLog;
 
     //logPrefebs  currentlog;
     [SerializeField]   Vector3 logSpawnPosition = new Vector3 () ;
@@ -43,7 +43,7 @@ public class GameControllerknifehit3d : MonoBehaviour
 
     private void Start()
     {
-        knifeCount = Random.Range(3, 6);
+        knifeCount = Random.Range(1, 3);
         //update the UI as soon as the game starts
         GameUI.SetInitialDisplayedKnifeCount(knifeCount);
         //also spawn the first knife
@@ -74,8 +74,19 @@ public class GameControllerknifehit3d : MonoBehaviour
 
     private void SpawnLog()
     {
+<<<<<<< HEAD
         Instantiate(logPrefebs[currentLog], logPrefebs[currentLog].transform.position, logPrefebs[currentLog].transform.rotation);
+=======
+>>>>>>> parent of d20c205 (Score system and High Score system implementation)
 
+        
+            print("firstlog");
+
+        
+
+        Instantiate(SpawnyLog, logSpawnPosition, Quaternion.identity);
+            
+        
     }
 
     //the public method for starting game over
@@ -107,7 +118,10 @@ public class GameControllerknifehit3d : MonoBehaviour
     {
         if (knifeCount <= 0)
         {
-            knifeCount = Random.Range(3, 8);
+            
+            
+            knifeCount = Random.Range(1, 3);
+
             //update the UI as soon as the game starts
             GameUI.SetInitialDisplayedKnifeCount(knifeCount);
             Destroy(GameObject.FindGameObjectWithTag("Log"));
@@ -120,6 +134,11 @@ public class GameControllerknifehit3d : MonoBehaviour
 
             print(currentLog);
         }
+            if (currentLog > 5)
+            {
+                Instantiate(logPrefebs[Random.Range(2, logPrefebs.Count - 1)], logSpawnPosition, Quaternion.identity);
+                print("restart");
+            }
     }
     public void NewLog()
     {
