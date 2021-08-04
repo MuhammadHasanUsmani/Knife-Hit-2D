@@ -20,6 +20,8 @@ public class GameUI : MonoBehaviour
     //enable the restartButton game object
     public void ShowRestartButton()
     {
+
+        Score.instance.SetHighScore(Score.instance.GetScore());
         restartButton.SetActive(true);
     }
 
