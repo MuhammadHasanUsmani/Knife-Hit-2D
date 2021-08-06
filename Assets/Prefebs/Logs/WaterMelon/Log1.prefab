@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7738764657057940595}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Log1
   m_TagString: Log
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,6 +38,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7738764657057940595}
     m_Modifications:
+    - target: {fileID: 7533704659033679737, guid: baca37c2437f1b243a9212986bea647f,
+        type: 3}
+      propertyPath: rotationPattern.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8899676984331211459, guid: baca37c2437f1b243a9212986bea647f,
         type: 3}
       propertyPath: m_RootOrder

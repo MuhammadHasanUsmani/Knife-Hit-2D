@@ -4999,7 +4999,7 @@ MonoBehaviour:
   rotationPattern:
   - Speed: 15
     Duration: 2
-  - Speed: -30
+  - Speed: -15
     Duration: 3
   - Speed: 10
     Duration: 1
@@ -5014,7 +5014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3341921702635943072}
   m_Layer: 0
-  m_Name: Log2
+  m_Name: Log6
   m_TagString: Log
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
