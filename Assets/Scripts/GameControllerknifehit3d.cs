@@ -131,5 +131,6 @@ public class GameControllerknifehit3d : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        Time.timeScale = 1f;
     }
 }

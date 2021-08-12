@@ -75,6 +75,7 @@ public class KnifeScript : MonoBehaviour
         //collision with another knife
         else if (collision.collider.tag == "Knife")
         {
+            Time.timeScale = 0.2f;
             //start rapidly moving downwards
             rb.velocity = new Vector3(rb.velocity.x, -2,0);
             //Game Over
