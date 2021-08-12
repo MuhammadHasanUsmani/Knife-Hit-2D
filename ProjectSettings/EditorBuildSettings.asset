@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 482ac6a7bdc1ff446bb6c51df1c79851
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/KnifeHit/Scene/HomeScene.unity
-    guid: ada4e4a0738c05c46b5da75f62ba8118
-  - enabled: 1
-    path: Assets/KnifeHit/Scene/GameScene.unity
-    guid: fa0cd6ab5cb82b64b9a6c48c3913471d
+    path: Assets/Scenes/GameScene.unity
+    guid: 28603f867549fe94eb1f76bdf152f8b3
   m_configObjects: {}
